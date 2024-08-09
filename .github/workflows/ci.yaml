@@ -26,14 +26,14 @@ on:
     - 'LICENSE'
 jobs:
   build:
-    container: ubuntu:22.04
+    container: registry.suse.com/bci/bci-base:15.6
     strategy:
       matrix:
         arch:
           - amd64
           - arm64
     name : CI
-    runs-on : org-${{ github.repository_owner_id }}-{{ arch }}-k8s
+    runs-on : org-${{ github.repository_owner_id }}-${{ matrix.arch }}-k8s
     outputs:
       k3sversions: ${{ steps.support.outputs.k3sversions }}
     steps:
