@@ -29,16 +29,13 @@ jobs:
     strategy:
       matrix:
         arch:
-          - amd64
+          - x64
           - arm64
     name : CI
-    container: ubuntu22-full-${{ matrix.arch == 'amd64' && 'x64' || matrix.arch }}
-    runs-on : org-${{ github.repository_owner_id }}-${{ matrix.arch }}-k8s
+    runs-on : runs-on,image=ubuntu22-full-${{ matrix.arch }},runner=2cpu-linux-${{ matrix.arch }},run-id=${{ github.run_id }}
     outputs:
       k3sversions: ${{ steps.support.outputs.k3sversions }}
     steps:
-      - name: Install packages
-        run: zypper in -y make git gawk docker
       - name : Checkout repository
         uses : actions/checkout@v4
         with :
