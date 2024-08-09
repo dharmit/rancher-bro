@@ -32,7 +32,7 @@ jobs:
           - amd64
           - arm64
     name : CI
-    container: ubuntu22-full-${{ matrix.arch == "amd64" && "x64" || matrix.arch }}
+    container: ubuntu22-full-${{ matrix.arch == 'amd64' && 'x64' || matrix.arch }}
     runs-on : org-${{ github.repository_owner_id }}-${{ matrix.arch }}-k8s
     outputs:
       k3sversions: ${{ steps.support.outputs.k3sversions }}
