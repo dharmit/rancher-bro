@@ -37,6 +37,8 @@ jobs:
     outputs:
       k3sversions: ${{ steps.support.outputs.k3sversions }}
     steps:
+      - name: Install packages
+        run: zypper in -y make git gawk docker
       - name : Checkout repository
         uses : actions/checkout@v4
         with :
