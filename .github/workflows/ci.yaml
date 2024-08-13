@@ -48,7 +48,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: bro-build-artifacts-${{ matrix.os }}
+          name: bro-build-artifacts-${{ matrix.arch }}
           path: ./dist/artifacts
         
   test:
